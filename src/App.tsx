@@ -9,11 +9,18 @@ import {
 import { Footer } from "./components/landing/Footer/Footer";
 import { Navbar } from "./components/landing/Navbar/Navbar";
 import logoImage from "./assets/URNI-logo.png";
+import cursorIcon from "./assets/URNI LOGO - ICON.svg";
 import mapImage from "./assets/map2.png";
 import heroImage from "./assets/donate-hero.png";
 import storyImage from "./assets/story.png";
 import volunteerImage from "./assets/volunteer-hero.png";
 import blogImage from "./assets/blog.jpg";
+import aboutHero1 from "./assets/About-hero-1.png";
+import aboutHero2 from "./assets/About-hero-2.png";
+import aboutHero3 from "./assets/About-hero-3.png";
+import heartDecoration from "./assets/heart-decoration.svg";
+import brushStrokeGreen from "./assets/brush-stroke-green.svg";
+import yellowRings from "./assets/yellow-rings.svg";
 
 const navItems = [
   "Home",
@@ -29,33 +36,6 @@ const facts = [
   { value: "230 Million", label: "people in Nigeria" },
   { value: "1st Oct, 1960", label: "independence day" },
   { value: "923,768 Km²", label: "land mass" },
-];
-
-const services = [
-  {
-    title: "Media & Storytelling",
-    icon: "📸",
-    blurb:
-      "We showcase Nigeria’s true beauty, culture, talent and achievements through digital narratives and media.",
-  },
-  {
-    title: "Youth Empowerment",
-    icon: "🚀",
-    blurb:
-      "We activate young people to lead, innovate, and take ownership of Nigeria’s progress and national identity.",
-  },
-  {
-    title: "National Rebranding",
-    icon: "🇳🇬",
-    blurb:
-      "We challenge negative narratives and amplify the strength, resilience, and promise of the Nigerian people.",
-  },
-  {
-    title: "Community Impact",
-    icon: "🤝",
-    blurb:
-      "Through outreach, partnerships and volunteer action, we support communities with care and dignity.",
-  },
 ];
 
 const volunteers = [
@@ -347,7 +327,7 @@ function HomePage() {
   }, [isPaused]);
 
   return (
-    <div className="mx-auto w-full max-w-360 bg-[#f1ffef] pb-8 text-[#333]">
+    <div className="w-full bg-[#f1ffef] text-[#333]" style={{ cursor: `url(${cursorIcon}) 8 8, auto` }}>
       <Navbar
         items={navItems}
         ctaLabel="Donate Now"
@@ -424,54 +404,97 @@ function HomePage() {
           </div>
         </section>
 
-        <section className="grid gap-4 bg-[#f4f8f4] px-4 py-8 md:grid-cols-4 md:px-6">
-          {facts.map((fact) => (
-            <div
-              key={fact.label}
-              className="rounded-[22px] border border-[#dff1e7] bg-white/70 p-5 text-center shadow-[0_10px_26px_rgba(1,68,33,0.04)]"
-            >
-              <strong className="block text-[clamp(1.6rem,2vw,2.4rem)] font-black tracking-[-0.06em] text-[#014421]">
-                {fact.value}
-              </strong>
-              <span className="mt-2 block text-sm font-bold uppercase tracking-[0.12em] text-[#3d514c]">
-                {fact.label}
-              </span>
-            </div>
-          ))}
-        </section>
+        <section className="relative isolate overflow-hidden bg-none px-0 py-16 md:px-6 xl:px-8">
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute left-[-70px] top-12 h-56 w-56 opacity-90"
+            style={{ backgroundImage: `url(${brushStrokeGreen})`, backgroundSize: 'contain', backgroundRepeat: 'no-repeat' }}
+          />
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute right-[-10px] top-10 h-36 w-36 opacity-70"
+            style={{ backgroundImage: `url(${yellowRings})`, backgroundSize: 'contain', backgroundRepeat: 'no-repeat' }}
+          />
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute bottom-8 left-10 h-20 w-20 opacity-80"
+            style={{ backgroundImage: `url(${heartDecoration})`, backgroundSize: 'contain', backgroundRepeat: 'no-repeat' }}
+          />
 
-        <section className="px-4 py-16 md:px-6">
-          <div className="mb-8">
-            <p className="text-sm font-extrabold uppercase tracking-[0.2em] text-[#025836]">
-              About us
-            </p>
-            <h2 className="mt-3 text-4xl font-black tracking-[-0.06em] text-[#0b1511]">
-              We are changing the narrative
-            </h2>
+          <div className="relative z-10 mx-auto grid max-w-[1280px] items-center gap-10 lg:grid-cols-[1.05fr_0.95fr]">
+            <div className="relative mx-auto w-full max-w-[560px]">
+              <div className="relative overflow-hidden rounded-[42px] bg-none p-4 ">
+                <div className="grid gap-4">
+                  <div className="grid gap-4 sm:grid-cols-[1.15fr_0.85fr]">
+                    <div className="overflow-hidden rounded-[32px] bg-[#dfe9e1] shadow-[0_12px_30px_rgba(1,68,33,0.08)]">
+                      <img src={aboutHero1} alt="Children looking through a window" className="h-72 w-full object-cover grayscale" />
+                    </div>
+                    <div className="overflow-hidden rounded-[32px] bg-[#dfe9e1] shadow-[0_12px_30px_rgba(1,68,33,0.08)]">
+                      <img src={aboutHero2} alt="A child smiling" className="h-72 w-full object-cover grayscale" />
+                    </div>
+                  </div>
+
+                  <div className="overflow-hidden rounded-[32px] bg-[#dfe9e1] shadow-[0_12px_30px_rgba(1,68,33,0.08)]">
+                    <img src={aboutHero3} alt="Children in a boat" className="h-60 w-full object-cover grayscale" />
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="max-w-[620px] lg:justify-self-end">
+
+              <h2 className="text-[clamp(2.1rem,3vw,3.5rem)] font-black leading-[0.95] tracking-[-0.07em] text-[#0c1413]">
+                Rediscovering Nigeria
+                <br />
+                By Nigerians
+              </h2>
+
+              <p className="mt-6 text-lg leading-8 text-[#425952]">
+                Unveiling and Rebranding Nigeria Initiative is a nonprofit organization committed to showcasing Nigeria’s true potential; its people, heritage, and promise. Using technology and media, we present a vibrant and dynamic Nigeria to the world.
+              </p>
+
+              <div className="mt-4 space-y-6">
+                <div className="flex items-start gap-4">
+                  <div>
+                    <h3 className="text-[1.5rem] font-black leading-none tracking-[-0.05em] text-[#0c1413]">Community Engagement</h3>
+                    <p className="mt-2 max-w-[430px] text-lg leading-7 text-[#4d685f]">
+                      Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam, porro?
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-4">
+                  <div>
+                    <h3 className="text-[1.5rem] font-black leading-none tracking-[-0.05em] text-[#0c1413]">Donation Making</h3>
+                    <p className="mt-2 max-w-[430px] text-lg leading-7 text-[#4d685f]">
+                      Our success stories highlight the real-life impact of your donations and the resilience of those we help.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <a
+                href="https://www.unveilingnigeria.ng/about-us"
+                target="_blank"
+                rel="noreferrer"
+                className="mt-4 inline-flex items-center gap-3 rounded-full bg-[#0a7a5d] px-5 py-4 text-lg font-black text-white shadow-[0_12px_24px_rgba(10,122,93,0.18)] transition hover:-translate-y-0.5"
+              >
+                About More
+                <span aria-hidden="true">→</span>
+              </a>
+            </div>
           </div>
 
-          <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
-            {services.map((service) => (
-              <article
-                key={service.title}
-                className="group rounded-[28px] border border-[#dfe9e1] bg-white p-6 shadow-[0_16px_35px_rgba(1,68,33,0.06)] transition duration-300 hover:-translate-y-1 hover:shadow-[0_20px_45px_rgba(1,68,33,0.1)]"
-              >
-                <div className="mb-5 flex h-14 w-14 items-center justify-center rounded-2xl bg-[#ecf9ee] text-2xl shadow-inner">
-                  {service.icon}
-                </div>
-                <h3 className="text-xl font-black text-[#0b1511]">
-                  {service.title}
-                </h3>
-                <p className="mt-3 text-base leading-7 text-[#50625e]">
-                  {service.blurb}
-                </p>
-                <button
-                  type="button"
-                  className="mt-5 inline-flex rounded-full border border-[#dfe9e1] px-4 py-2 text-sm font-extrabold uppercase tracking-[0.08em] text-[#025836] transition hover:border-[#025836] hover:bg-[#f1ffef]"
-                >
-                  Read more
-                </button>
-              </article>
+          <div className="relative z-10 mx-auto mt-12 grid max-w-[1200px] grid-cols-2 gap-8 border-t border-[#d5d9d3] pt-8 md:grid-cols-4">
+            {facts.map((fact) => (
+              <div key={fact.label} className="text-center md:text-left">
+                <strong className="block text-[clamp(2rem,3vw,3.5rem)] font-black tracking-[-0.08em] text-[#0a7a5d]">
+                  {fact.value}
+                </strong>
+                <span className="mt-2 block text-sm font-medium text-[#425952] md:text-base">
+                  {fact.label}
+                </span>
+              </div>
             ))}
           </div>
         </section>
