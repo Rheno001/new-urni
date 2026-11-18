@@ -15,21 +15,21 @@ export function Navbar({
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
   return (
-    <header className="sticky top-0 z-30 mx-auto mt-5 flex w-[min(100%,1360px)] items-center justify-between gap-2 rounded-[26px] border border-white/20 p-3 text-green-800 shadow-[0_18px_45px_rgba(1,68,33,0.18)] backdrop-blur-xl backdrop-saturate-150 md:px-4">
-      <div className="inline-flex shrink-0 items-center justify-center" aria-label="URNI home">
+    <header className="sticky top-0 z-40 mx-auto mt-5 flex w-[min(100%,1360px)] items-center justify-between gap-2 rounded-[26px] border border-white/20 bg-[#013524]/90 p-3 text-white shadow-[0_18px_45px_rgba(1,68,33,0.22)] backdrop-blur-xl backdrop-saturate-150 transition-all duration-300 md:px-5">
+      <div className="inline-flex shrink-0 items-center justify-center transition-transform duration-300 hover:scale-105" aria-label="URNI home">
         <img src={logo} alt="URNI logo" className="block h-auto w-24 md:w-44 drop-shadow-[0_10px_14px_rgba(0,0,0,0.18)]" />
       </div>
 
-      <nav className="hidden flex-1 flex-wrap items-center justify-center gap-x-3 gap-y-2 text-center lg:flex" aria-label="Main navigation">
+      <nav className="hidden flex-1 flex-wrap items-center justify-center gap-x-4 gap-y-2 text-center lg:flex" aria-label="Main navigation">
         {items.map((item) => (
-          <a key={item} href="#" className="text-[0.72rem] font-extrabold tracking-[-0.02em] text-white/85 transition hover:-translate-y-0.5 hover:text-white xl:text-[0.78rem]">
+          <a key={item} href="#" className="relative py-1 text-[0.78rem] font-black uppercase tracking-wider text-white/85 transition-all duration-300 hover:-translate-y-0.5 hover:text-[#ffd700] xl:text-[0.82rem]">
             {item}
           </a>
         ))}
       </nav>
 
       <div className="hidden items-center justify-end gap-2.5 lg:flex">
-        <a href={ctaHref} className="inline-flex items-center justify-center rounded-full bg-linear-to-b from-[#ffd700] to-[#e0b700] px-4 py-2 text-[0.72rem] font-black text-[#014421] shadow-[inset_0_-2px_0_rgba(0,0,0,0.08)] transition hover:-translate-y-0.5 sm:px-5 sm:text-sm">
+        <a href={ctaHref} className="btn-bounce inline-flex items-center justify-center rounded-full bg-linear-to-b from-[#ffd700] to-[#e0b700] px-5 py-2 text-[0.75rem] font-black uppercase tracking-wider text-[#014421] shadow-[0_4px_14px_rgba(255,215,0,0.35)] transition-all sm:px-6 sm:text-sm">
           {ctaLabel}
         </a>
       </div>

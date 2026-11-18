@@ -20,6 +20,8 @@ type FooterProps = {
   onSubscribe?: (email: string) => void
 }
 
+const CURRENT_YEAR = new Date().getFullYear()
+
 export function Footer({
   description = 'We support practical action, inclusive development and community-led change across Nigeria.',
   phone = '+234 800 000 0000',
@@ -129,7 +131,7 @@ export function Footer({
         </div>
 
         <div className="relative z-10 border-t border-white/10 bg-linear-to-b from-[#056c53] to-[#055944] px-5 py-4 text-center text-sm font-bold text-white/90">
-          © {new Date().getFullYear()} {organisationName}. All rights reserved.
+          © {CURRENT_YEAR} {organisationName}. All rights reserved.
         </div>
       </div>
     </footer>
