@@ -76,7 +76,7 @@ export function SponsorCarousel() {
         <div className="h-44 w-3/4 rounded-full bg-[radial-gradient(ellipse_at_center,rgba(2,88,54,0.08),transparent_70%)] blur-2xl" />
       </div>
 
-      <div className="mx-auto max-w-7xl px-4 md:px-6">
+      <div className="mx-auto max-w-7xl px-5 sm:px-6 md:px-8">
         <div className="mb-8 flex flex-col items-center justify-center text-center">
           <div className="inline-flex items-center gap-2 rounded-full border border-[#025836]/20 bg-white/70 px-4 py-1.5 shadow-[0_4px_14px_rgba(2,88,54,0.06)] backdrop-blur-md">
             <span className="h-2 w-2 rounded-full bg-[#025836] animate-pulse" />

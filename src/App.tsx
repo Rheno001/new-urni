@@ -290,6 +290,15 @@ function HomePage() {
   const eventTrackRef = useRef<HTMLDivElement | null>(null);
   const [isPaused, setIsPaused] = useState(false);
 
+  const scrollEvents = (direction: "left" | "right") => {
+    if (!eventTrackRef.current) return;
+    const scrollAmount = 340;
+    eventTrackRef.current.scrollBy({
+      left: direction === "left" ? -scrollAmount : scrollAmount,
+      behavior: "smooth",
+    });
+  };
+
   useEffect(() => {
     const updateParallax = () => {
       document.documentElement.style.setProperty(
@@ -332,12 +341,12 @@ function HomePage() {
     <div className="w-full bg-[#f1ffef] text-[#333]" style={{ cursor: `url(${cursorIcon}) 8 8, auto` }}>
       <Navbar
         items={navItems}
-        ctaLabel="Donate Now"
-        ctaHref="https://www.unveilingnigeria.ng/donate"
+        ctaLabel="Volunteer"
+        ctaHref="https://www.unveilingnigeria.ng/volunteer"
       />
 
       <main className="mx-auto w-[min(100%,1360px)]">
-        <section className="relative mx-auto max-w-[1400px] overflow-hidden bg-[linear-gradient(180deg,rgba(241,255,239,0.96),rgba(168,212,184,0.15))] px-4 pb-4 pt-8 md:px-6 lg:px-8">
+        <section className="relative mx-auto max-w-[1400px] overflow-hidden bg-[linear-gradient(180deg,rgba(241,255,239,0.96),rgba(168,212,184,0.15))] px-5 pb-6 pt-6 sm:px-6 md:px-8">
           <Parallax speed={-0.1} className="absolute inset-0 z-0 opacity-80 pointer-events-none">
             <div className="absolute left-0 top-0 h-full w-1/3 bg-[radial-gradient(circle_at_center,rgba(2,88,54,0.14),transparent_65%)]" />
             <div className="absolute right-0 top-0 h-full w-1/2 bg-[radial-gradient(circle_at_center,rgba(240,182,32,0.22),transparent_63%)]" />
@@ -375,16 +384,6 @@ function HomePage() {
                     →
                   </span>
                 </a>
-
-                <a
-                  className="btn-bounce flex h-14 w-14 items-center justify-center rounded-full bg-gradient-to-b from-[#ffd700] to-[#e29f1d] text-xl text-[#014421] shadow-[0_12px_25px_rgba(245,177,61,0.35)] transition-all"
-                  href="https://www.unveilingnigeria.ng/donate"
-                  target="_blank"
-                  rel="noreferrer"
-                  aria-label="Make a donation"
-                >
-                  ▶
-                </a>
               </div>
             </Reveal>
 
@@ -395,47 +394,8 @@ function HomePage() {
                   alt="Nigeria map illustration"
                   className="w-full object-cover drop-shadow-[0_24px_45px_rgba(2,88,54,0.18)]"
                 />
-
-                {/* Floating Badge 1: 230M People */}
-                <div className="animate-bounce-gentle absolute -top-3 left-2 rounded-2xl border border-white/80 bg-white/95 px-3.5 py-2 shadow-[0_12px_28px_rgba(2,88,54,0.15)] backdrop-blur-md sm:left-6 md:left-8">
-                  <div className="flex items-center gap-2">
-                    <span className="flex h-7 w-7 items-center justify-center rounded-full bg-[#e8f8ed] text-sm shadow-inner">💚</span>
-                    <div>
-                      <p className="text-[10px] font-black uppercase tracking-wider text-[#025836]">Our People</p>
-                      <p className="text-xs font-black text-[#0b1511]">230M+ Citizens</p>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Floating Badge 2: 250+ Ethnic Groups */}
-                <div className="animate-float-delayed absolute -bottom-3 right-2 rounded-2xl border border-white/80 bg-white/95 px-3.5 py-2 shadow-[0_12px_28px_rgba(240,182,32,0.2)] backdrop-blur-md sm:right-6 md:right-8">
-                  <div className="flex items-center gap-2">
-                    <span className="flex h-7 w-7 items-center justify-center rounded-full bg-[#fff4ce] text-sm shadow-inner">✨</span>
-                    <div>
-                      <p className="text-[10px] font-black uppercase tracking-wider text-[#977300]">Heritage</p>
-                      <p className="text-xs font-black text-[#0b1511]">250+ Ethnic Groups</p>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Floating Badge 3: Civic Movement */}
-                <div className="animate-pulse-soft absolute right-0 top-1/3 hidden rounded-2xl border border-white/80 bg-[#025836] px-3.5 py-2 text-white shadow-[0_12px_28px_rgba(2,88,54,0.25)] sm:flex items-center gap-2">
-                  <span className="h-2 w-2 rounded-full bg-[#f0b620] animate-ping" />
-                  <span className="text-xs font-black tracking-wide">Rise Up Patriots</span>
-                </div>
               </div>
             </Reveal>
-          </div>
-
-          <div
-            className="pointer-events-none absolute -bottom-6 left-8 z-0 opacity-80"
-            aria-hidden="true"
-          >
-            <div className="flex gap-3 text-[2.5rem] text-[#025836]/20">
-              <span className="animate-bounce-gentle">✋</span>
-              <span className="animate-float-slow">🤝</span>
-              <span className="animate-float-delayed text-red-500/30">❤</span>
-            </div>
           </div>
 
           {/* Scroll Down Hint with Bounce */}
@@ -449,7 +409,7 @@ function HomePage() {
           </div>
         </section>
 
-        <section className="relative isolate overflow-hidden bg-none px-0 py-16 md:px-6 xl:px-8">
+        <section className="relative isolate overflow-hidden bg-none px-5 py-14 sm:px-6 md:px-8">
           <Parallax speed={-0.12} className="pointer-events-none absolute left-[-70px] top-12 h-56 w-56 opacity-90">
             <div
               aria-hidden="true"
@@ -557,7 +517,7 @@ function HomePage() {
           </div>
         </section>
 
-        <section className="grid gap-8 px-4 pb-16 md:grid-cols-2 md:px-6">
+        <section className="grid gap-8 px-5 pb-16 sm:px-6 md:grid-cols-2 md:px-8">
           <Reveal direction="left" duration={850} className="overflow-hidden rounded-[28px] border border-[#dfe9e1] bg-[#eef7f0]">
             <img
               src={storyImage}
@@ -609,7 +569,7 @@ function HomePage() {
           </Reveal>
         </section>
 
-        <section className="px-4 pb-16 md:px-6">
+        <section className="px-5 pb-16 sm:px-6 md:px-8">
           <Reveal direction="up" className="mb-8 text-center">
             <p className="text-sm font-extrabold uppercase tracking-[0.2em] text-[#025836]">
               Volunteer with us
@@ -654,7 +614,7 @@ function HomePage() {
           </div>
         </section>
 
-        <section className="px-4 pb-16 md:px-6">
+        <section className="px-5 pb-16 sm:px-6 md:px-8">
           <Reveal direction="up" className="mb-8">
             <p className="text-sm font-extrabold uppercase tracking-[0.2em] text-[#025836]">
               Featured News &amp; Blogs
@@ -700,7 +660,7 @@ function HomePage() {
           </div>
         </section>
 
-        <section className="relative overflow-hidden bg-[#013c2d] px-4 py-12 text-white md:px-6">
+        <section className="relative overflow-hidden bg-[#013c2d] px-5 py-12 text-white sm:px-6 md:px-8">
           <Parallax speed={0.14} className="pointer-events-none absolute -right-16 top-0 h-52 w-72 rotate-20 rounded-full bg-[#f0b620] opacity-95 blur-[1px]">
             <div className="h-full w-full" />
           </Parallax>
@@ -725,23 +685,45 @@ function HomePage() {
             </Reveal>
 
             <Reveal direction="right">
-              <a
-                className="btn-bounce inline-flex items-center rounded-full bg-[#d3f0e4] px-5 py-3 text-sm font-extrabold uppercase tracking-[0.08em] text-[#013c2d] transition hover:bg-white"
-                href="https://www.unveilingnigeria.ng/contact"
-                target="_blank"
-                rel="noreferrer"
-              >
-                Contact Us Now{" "}
-                <span aria-hidden="true" className="ml-2">
-                  →
-                </span>
-              </a>
+              <div className="flex items-center gap-3">
+                {/* Desktop Navigation Arrows to move left or right */}
+                <div className="hidden items-center gap-2 md:flex">
+                  <button
+                    type="button"
+                    onClick={() => scrollEvents("left")}
+                    aria-label="Previous events"
+                    className="btn-bounce flex h-11 w-11 items-center justify-center rounded-full border border-white/20 bg-white/10 text-lg font-black text-white backdrop-blur-sm transition hover:bg-white hover:text-[#013c2d]"
+                  >
+                    ←
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => scrollEvents("right")}
+                    aria-label="Next events"
+                    className="btn-bounce flex h-11 w-11 items-center justify-center rounded-full border border-white/20 bg-white/10 text-lg font-black text-white backdrop-blur-sm transition hover:bg-white hover:text-[#013c2d]"
+                  >
+                    →
+                  </button>
+                </div>
+
+                <a
+                  className="btn-bounce inline-flex items-center rounded-full bg-[#d3f0e4] px-5 py-3 text-sm font-extrabold uppercase tracking-[0.08em] text-[#013c2d] transition hover:bg-white"
+                  href="https://www.unveilingnigeria.ng/contact"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  Contact Us Now{" "}
+                  <span aria-hidden="true" className="ml-2">
+                    →
+                  </span>
+                </a>
+              </div>
             </Reveal>
           </div>
 
           <div
             ref={eventTrackRef}
-            className="relative z-10 mx-auto mt-8 flex max-w-7xl gap-5 overflow-x-auto pb-2 md:overflow-visible"
+            className="relative z-10 mx-auto mt-8 flex max-w-7xl gap-5 overflow-x-auto pb-4 scroll-smooth [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
             onMouseEnter={() => setIsPaused(true)}
             onMouseLeave={() => setIsPaused(false)}
           >
@@ -773,45 +755,8 @@ function HomePage() {
           </div>
         </section>
 
-        <section className="px-4 py-16 md:px-6">
-          <Reveal direction="up" className="mb-8 text-center">
-            <p className="text-sm font-extrabold uppercase tracking-[0.2em] text-[#025836]">
-              Interesting facts
-            </p>
-            <h2 className="mt-3 text-4xl font-black tracking-[-0.06em] text-[#0b1511]">
-              Facts &amp; figures about Nigeria
-            </h2>
-          </Reveal>
-
-          <div className="grid gap-6 md:grid-cols-4">
-            {["250+", "230M", "1960", "500+"].map((value, index) => (
-              <Reveal key={value} direction="up" delay={index * 100}>
-                <div
-                  className="card-bounce-hover group rounded-[28px] border border-[#dfe9e1] bg-white p-6 shadow-[0_16px_35px_rgba(1,68,33,0.05)] hover:border-[#025836]/40"
-                >
-                  <span className="mb-4 inline-flex text-sm font-black uppercase tracking-[0.2em] text-[#025836]">
-                    0{index + 1}
-                  </span>
-                  <h3 className="text-3xl font-black tracking-tighter text-[#0b1511] transition-transform duration-300 group-hover:scale-105 group-hover:text-[#025836]">
-                    {value}
-                  </h3>
-                  <p className="mt-3 text-base leading-7 text-[#50625e]">
-                    {index === 0 &&
-                      "Ethnic groups, including the Hausa, Yoruba, and Igbo."}
-                    {index === 1 && "Nigeria has a population of 230 million."}
-                    {index === 2 &&
-                      "Nigeria gained independence on 1st of October, 1960."}
-                    {index === 3 &&
-                      "Native languages are spoken across the country."}
-                  </p>
-                </div>
-              </Reveal>
-            ))}
-          </div>
-        </section>
-
         <Reveal direction="zoom">
-          <section className="mx-4 my-8 flex flex-col items-center justify-between gap-6 rounded-[30px] bg-[#0b1511] px-6 py-8 text-white shadow-[0_20px_50px_rgba(0,0,0,0.2)] md:mx-6 md:flex-row md:px-10">
+          <section className="mx-3 my-8 flex flex-col items-center justify-between gap-6 rounded-[30px] bg-[#0b1511] px-5 py-8 text-white shadow-[0_20px_50px_rgba(0,0,0,0.2)] sm:mx-6 md:mx-8 md:flex-row md:px-10">
             <div>
               <p className="text-sm font-extrabold uppercase tracking-[0.2em] text-[#ffd700]">
                 Support Nigeria&apos;s future
@@ -831,7 +776,7 @@ function HomePage() {
           </section>
         </Reveal>
 
-        <section className="px-4 pb-16 md:px-6">
+        <section className="px-5 pb-16 sm:px-6 md:px-8">
           <Reveal direction="up" className="mb-8 text-center">
             <p className="text-sm font-extrabold uppercase tracking-[0.2em] text-[#025836]">
               Latest stories
