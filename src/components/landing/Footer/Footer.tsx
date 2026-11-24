@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import type { FormEvent } from 'react'
+import { Link } from 'react-router-dom'
 import eagleImage from '../../../assets/URNI-eagle.png'
 import logoImage from '../../../assets/URNI-logo.png'
 import { ArrowRightIcon, MailIcon, MapPinIcon, PhoneIcon } from '../shared/icons'
@@ -13,6 +14,7 @@ type FooterProps = {
   description?: string
   phone?: string
   email?: string
+  location?: string
   quickLinks?: string[]
   programmes?: string[]
   socials?: SocialLink[]
@@ -26,6 +28,7 @@ export function Footer({
   description = 'We support practical action, inclusive development and community-led change across Nigeria.',
   phone = '+234 800 000 0000',
   email = 'hello@urni.org',
+  location = 'Nigeria',
   quickLinks = ['About', 'Impact', 'Partners', 'Stories'],
   programmes = ['Education', 'Health', 'Women & Youth', 'Resilience'],
   socials = [
@@ -73,7 +76,7 @@ export function Footer({
               <ul className="m-0 flex list-none flex-col gap-3 p-0 text-white/90">
                 <li className="inline-flex items-center gap-2"><span className="grid h-6 w-6 place-items-center rounded-full bg-[#f5b13d] text-[0.8rem] font-black text-[#014421]"><PhoneIcon /></span><span>{phone}</span></li>
                 <li className="inline-flex items-center gap-2"><span className="grid h-6 w-6 place-items-center rounded-full bg-[#f5b13d] text-[0.8rem] font-black text-[#014421]"><MailIcon /></span><span>{email}</span></li>
-                <li className="inline-flex items-center gap-2"><span className="grid h-6 w-6 place-items-center rounded-full bg-[#f5b13d] text-[0.8rem] font-black text-[#014421]"><MapPinIcon /></span><span>Nigeria</span></li>
+                <li className="inline-flex items-center gap-2"><span className="grid h-6 w-6 place-items-center rounded-full bg-[#f5b13d] text-[0.8rem] font-black text-[#014421]"><MapPinIcon /></span><span>{location}</span></li>
               </ul>
             </div>
 
@@ -82,7 +85,11 @@ export function Footer({
               <ul className="m-0 flex list-none flex-col gap-3 p-0">
                 {quickLinks.map((item) => (
                   <li key={item}>
-                    <a href="#" className="inline-flex items-center gap-2 text-white/80 transition hover:text-white">{item}</a>
+                    {item === 'About' ? (
+                      <Link to="/about-us" className="inline-flex items-center gap-2 text-white/80 transition hover:text-white">{item}</Link>
+                    ) : (
+                      <a href="#" className="inline-flex items-center gap-2 text-white/80 transition hover:text-white">{item}</a>
+                    )}
                   </li>
                 ))}
               </ul>

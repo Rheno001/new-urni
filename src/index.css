@@ -3,7 +3,7 @@
 
 :root {
   color: #19352f;
-  background: #f1ffef;
+  background: #fff;
   font-family: 'Nunito', sans-serif;
   line-height: 1.5;
   font-weight: 400;
@@ -17,7 +17,7 @@ html {
 body {
   margin: 0;
   min-height: 100vh;
-  background: linear-gradient(180deg, #f5fff6 0%, #edfef0 100%);
+  background: #fff;
   overflow-x: hidden;
 }
 
@@ -140,6 +140,58 @@ button {
   }
   100% {
     background-position: 200% 0;
+  }
+}
+
+@keyframes aboutFlow {
+  to {
+    stroke-dashoffset: -28;
+  }
+}
+
+.hero-slide-in {
+  animation: heroSlideIn 900ms ease-in-out both;
+}
+
+.hero-slide-out {
+  animation: heroSlideOut 900ms ease-in-out both;
+}
+
+@keyframes heroSlideIn {
+  from {
+    opacity: 0;
+    transform: scale(1.025);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes heroSlideOut {
+  to {
+    opacity: 0;
+    transform: scale(0.99);
+  }
+}
+
+.about-flow-path {
+  stroke-dasharray: 8 8;
+  animation: aboutFlow 1.4s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-slide-in {
+    animation: none;
+  }
+
+  .hero-slide-out {
+    display: none;
+    animation: none;
+  }
+
+  .about-flow-path {
+    animation: none;
   }
 }
 

@@ -8,6 +8,7 @@ import {
 } from "react-router-dom";
 import { Footer } from "./components/landing/Footer/Footer";
 import { Navbar } from "./components/landing/Navbar/Navbar";
+import { AboutPage } from "./AboutPage";
 import { SponsorCarousel } from "./components/animations/SponsorCarousel";
 import { Reveal, Parallax } from "./components/animations/ScrollReveal";
 import logoImage from "./assets/URNI-logo.png";
@@ -204,7 +205,7 @@ function EventDetailPage() {
 
   if (!event) {
     return (
-      <div className="min-h-screen bg-[#f1ffef] px-4 py-10 text-[#333]">
+      <div className="min-h-screen bg-white px-4 py-10 text-[#333]">
         <div className="mx-auto max-w-3xl rounded-4xl bg-white/80 p-8 shadow-[0_18px_45px_rgba(1,68,33,0.12)] backdrop-blur-sm">
           <h1 className="text-3xl font-black text-[#025836]">
             Event not found
@@ -221,7 +222,7 @@ function EventDetailPage() {
   }
 
   return (
-    <div className="min-h-screen bg-[#f1ffef] px-4 py-8 text-[#333]">
+    <div className="min-h-screen bg-white px-4 py-8 text-[#333]">
       <div className="mx-auto max-w-5xl rounded-4xl bg-white/80 p-4 shadow-[0_18px_45px_rgba(1,68,33,0.12)] backdrop-blur-sm md:p-8">
         <Link
           to="/"
@@ -338,7 +339,7 @@ function HomePage() {
   }, [isPaused]);
 
   return (
-    <div className="w-full bg-[#f1ffef] text-[#333]" style={{ cursor: `url(${cursorIcon}) 8 8, auto` }}>
+    <div className="w-full bg-white text-[#333]" style={{ cursor: `url(${cursorIcon}) 8 8, auto` }}>
       <Navbar
         items={navItems}
         ctaLabel="Volunteer"
@@ -346,12 +347,7 @@ function HomePage() {
       />
 
       <main className="mx-auto w-[min(100%,1360px)]">
-        <section className="relative mx-auto max-w-[1400px] overflow-hidden bg-[linear-gradient(180deg,rgba(241,255,239,0.96),rgba(168,212,184,0.15))] px-5 pb-6 pt-6 sm:px-6 md:px-8">
-          <Parallax speed={-0.1} className="absolute inset-0 z-0 opacity-80 pointer-events-none">
-            <div className="absolute left-0 top-0 h-full w-1/3 bg-[radial-gradient(circle_at_center,rgba(2,88,54,0.14),transparent_65%)]" />
-            <div className="absolute right-0 top-0 h-full w-1/2 bg-[radial-gradient(circle_at_center,rgba(240,182,32,0.22),transparent_63%)]" />
-          </Parallax>
-
+        <section className="relative mx-auto max-w-[1400px] overflow-hidden bg-white px-5 pb-6 pt-6 sm:px-6 md:px-8">
           <div className="relative z-10 mx-auto grid max-w-[1250px] items-center gap-6 lg:grid-cols-[1.05fr_0.95fr]">
             <Reveal direction="left" duration={900} className="max-w-[620px] justify-self-center lg:justify-self-start lg:pl-4">
               <p className="mb-4 inline-flex items-center gap-4 text-[clamp(1.4rem,2vw,2.25rem)] font-bold italic tracking-[-0.04em] text-[#025836]">
@@ -887,6 +883,7 @@ function App() {
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<HomePage />} />
+            <Route path="/about-us" element={<AboutPage />} />
             <Route path="/events/:eventId" element={<EventDetailPage />} />
           </Routes>
         </BrowserRouter>
